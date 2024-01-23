@@ -1,0 +1,241 @@
+body{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background: #e4ebf4;
+  }
+    .list-body {
+background: #e4ebf4;
+margin-top : 5rem;
+}
+h1 {
+font-family: sans-serif;
+}
+.olcards,
+.olcards * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.olcards:hover , .content:hover{
+translate : scale(1.02);
+color : "red";
+}
+.olcards {
+list-style: none;
+counter-reset: cardCount;
+font-family: sans-serif;
+display: flex;
+flex-direction: column;
+--cardsGap: 1rem;
+gap: var(--cardsGap);
+
+padding-bottom: var(--cardsGap);
+}
+.olcards li {
+counter-increment: cardCount;
+display: flex;
+color: white;
+--labelOffset: 1rem;
+margin: 1rem;
+padding: 1rem;
+--arrowClipSize: 1.5rem;
+margin-top: var(--labelOffset);
+}
+
+.olcards li::before {
+content: counter(cardCount, decimal-leading-zero);
+background: white;
+color: #f6c341;
+font-size: 2em;
+font-weight: 700;
+transform: translateY(calc(-1 * var(--labelOffset)));
+margin-right: calc(-1 * var(--labelOffset));
+z-index: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+padding-inline: 0.5em;
+}
+
+.olcards li .content {
+background-color: #f6c341;
+--inlinePadding: 1em;
+--boxPadding: 0.5em;
+display: grid;
+padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
+var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
+grid-template-areas:
+"icon title"
+"icon text";
+gap: 0.25em 1em;
+clip-path: polygon(
+0 0,
+calc(100% - var(--arrowClipSize)) 0,
+100% 50%,
+calc(100% - var(--arrowClipSize)) 100%,
+calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
+0 calc(100% + var(--cardsGap))
+);
+position: relative;
+}
+.olcards li .content::before {
+content: "";
+position: absolute;
+width: var(--labelOffset);
+height: var(--labelOffset);
+background: white;
+left: 0;
+bottom: 0;
+clip-path: polygon(0 0, 100% 0, 0 100%);
+filter: brightness(0.75);
+}
+.olcards li .content::after {
+content: "";
+position: absolute;
+height: var(--cardsGap);
+width: var(--cardsGap);
+background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
+left: 0;
+top: 100%;
+}
+.olcards li .icon {
+grid-area: icon;
+align-self: center;
+font-size: 2em;
+}
+.olcards li .content .title {
+grid-area: title;
+font-size: 1.25em;
+/* font-weight: 700; */
+}
+.olcards li .content .text {
+grid-area: text;
+}
+.olcards li:hover{
+transform: scale(1.02);
+}
+footer{
+background-color: #f6c341;
+color: white;
+padding:  2rem;
+}
+footer a{
+color: white;
+text-decoration: none;
+}
+
+.list-body h1{
+text-align: center;
+color: #f6c341;
+background-color: white;
+padding: 3px;
+border-radius: 25px;
+border: 2px solid #f6c341;
+width: 60%;
+margin: auto;
+}
+
+@media screen and (max-width : 450px) {
+footer{
+margin: 0;
+
+}
+
+.olcards li{
+margin : 0.5rem;
+padding: 0.5rem;
+}
+.row{
+--bs-gutter-x: 0rem;
+}
+.olcards{
+overflow-x: hidden;
+}
+/* .list-body{
+padding: 5rem;
+} */
+}
+
+.text span{
+font-weight: bold;
+color: #fff;
+font-size: 2rem;
+}
+.card{
+  margin: 1rem auto;
+}
+.card-title{
+  color: #F6C341;
+  text-align: center;
+}
+
+/* @media (max-width: 768px) {
+  .card {
+    margin: 2rem auto;
+  }
+} */
+.card-wrap{
+  width: 50%;
+  margin: 2rem auto;
+}
+
+@media (width <=500px){
+  .card-wrap {
+    width: 70%;
+    
+
+
+}
+.card{
+  margin-bottom: 2rem;
+}
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar{
+    background-color: #F5F5F5;
+}
+
+.nav-link 
+{
+    margin: 0 1.5rem 0 1.15rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #F6C341;
+    
+}
+
+
+.dropdown-menu{
+
+    margin: 0 1.5rem 0 1.15rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #F6C341;
+
+}
+.dropdown-item{
+    color: #F6C341;
+}
+
+@media screen and (max-width:994px) 
+{
+    .navbar-nav
+    {
+        margin-top: 1rem;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 1rem;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        background-color: #F6C341;
+    }   
+    .navbar-nav .nav-link.show , .nav-link{
+        color: white;
+    }
+}
